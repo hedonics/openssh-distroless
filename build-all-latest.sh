@@ -1,6 +1,6 @@
 #!/bin/sh
-prefix="${TAG_PREFIX:-}"
 set -e
+prefix="${TAG_PREFIX:-}"
 docker build -t "distroless-ssh-build:latest" --target build "$(dirname "$0")"
 docker build -t "${prefix}scp-distroless:latest" --target scp "$(dirname "$0")"
 docker build -t "${prefix}sftp-distroless:latest" --target sftp "$(dirname "$0")"
