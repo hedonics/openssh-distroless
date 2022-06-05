@@ -47,7 +47,7 @@ RUN tar xf libxcrypt-*.tar.xz && cd libxcrypt-*/ && \
     ./configure --prefix="/ssh" --with-privsep-user=nobody \
                 --with-privsep-path="/ssh/var/empty" \
                 LIBS='-pthread' && \
-    make -j `nproc` && make install
+    make -j`nproc` && make install
 
 # Base distroless image stage
 FROM gcr.io/distroless/base-debian11 as base
