@@ -22,9 +22,7 @@ WORKDIR /
 ENV CFLAGS="-I/ssh/include -L." \
     CPPFLAGS="-I/ssh/include -L."
 RUN apt update && \
-    apt install -y build-essential libkrb5-dev libssl-dev \
-                   libgss-dev libaudit-dev libcom-err2 libpam0g-dev wget \
-                   libselinux1-dev libsystemd-dev libwrap0-dev lsb-base
+    apt install -y build-essential wget lsb-base
 RUN wget "https://github.com/besser82/libxcrypt/releases/download/v${LIBXCRYPT_VERSION}/libxcrypt-${LIBXCRYPT_VERSION}.tar.xz" && \
     wget "https://zlib.net/zlib-${ZLIB_VERSION}.tar.gz" && \
     wget "https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${LIBRESSL_VERSION}.tar.gz" && \
