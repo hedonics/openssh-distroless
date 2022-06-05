@@ -48,31 +48,5 @@ RUN tar xf libxcrypt-*.tar.xz && cd libxcrypt-*/ && \
     make -j`nproc` && make install
 
 # Base distroless image stage
-FROM gcr.io/distroless/base-debian11 as base
+FROM gcr.io/distroless/base-debian11
 COPY --from=build /ssh /ssh
-
-# Stages for each entrypoint
-
-FROM base as ssh
-CMD ["/ssh/bin/ssh"]
-
-FROM base as ssh-add
-CMD ["/ssh/bin/ssh-add"]
-
-FROM base as ssh-agent
-CMD ["/ssh/bin/ssh-agent"]
-
-FROM base as ssh-keygen
-CMD ["/ssh/bin/ssh-keygen"]
-
-FROM base as ssh-keyscan
-CMD ["/ssh/bin/ssh-keyscan"]
-
-FROM base as sshd
-CMD ["/ssh/sbin/sshd"]
-
-FROM base as scp
-CMD ["/ssh/bin/scp"]
-
-FROM base as sftp
-CMD ["/ssh/bin/sftp"]
